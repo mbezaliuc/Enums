@@ -9,7 +9,7 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        if (new String(TestEnums.vowels).contains("" + name.charAt(name.length()-1))){
+        if (new String(TestEnums.VOWELS).contains("" + name.charAt(name.length()-1))){
          this.gender= Gender.FEMALE;
         }
         else {
@@ -61,13 +61,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name=" + name +
-                ", engagementStatus=" + engagementStatus +
-                ", gender=" + gender +
-                ", workingStatus=" + workingStatus +
-                ", maritalStatus=" + maritalStatus +
-                '}';
+        return "User: " +
+                "name = " + name +
+                ", engagementStatus = " + engagementStatus +
+                ", gender = " + gender +
+                ", workingStatus = " + workingStatus +
+                ", maritalStatus = " + maritalStatus;
     }
 }
 

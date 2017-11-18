@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class TestEnums {
-    public static final char vowels[] = {'a', 'o', 'i', 'e', 'u', 'y'};
-    public static final char consonants[] = {'b', 'c', 'p', 'r', 'm', 'x'};
+    public static final char VOWELS[] = {'a', 'o', 'i', 'e', 'u', 'y'};
+    public static final char CONSONANTS[] = {'b', 'c', 'p', 'r', 'm', 'x'};
 
     public static void main(String[] args) {
 
@@ -15,13 +15,10 @@ public class TestEnums {
     }
 
     public static List<User> generateUsers(int userCount) {
-
         List<User> userList = new ArrayList<>();
         for (String name : generateName(userCount)) {
             userList.add(new User(name));
         }
-
-
         return userList;
     }
 
@@ -29,27 +26,21 @@ public class TestEnums {
         List<String> userNameList = new ArrayList<>();
         for (int i = 0; i < totalCount; i++) {
             userNameList.add(getRandomName());
-
         }
         return userNameList;
     }
 
     public static String getRandomName() {
-
         Random random = new Random();
-        String name = "";
-        int nameLenths = (int) (Math.random() * 10);
-        if (nameLenths < 2) nameLenths = 2;
-        else if (nameLenths > 5) nameLenths = 5;
+        StringBuilder name = new StringBuilder();
+        int nameLenths = random.nextInt(4) + 2;
         for (int i = 0; i < nameLenths; i++) {
-
             if (random.nextBoolean()) {
-                name += vowels[random.nextInt(vowels.length)];
+                name.append(VOWELS[random.nextInt(VOWELS.length)]);
             } else {
-                name += consonants[random.nextInt(consonants.length)];
+                name.append(CONSONANTS[random.nextInt(CONSONANTS.length)]);
             }
         }
-
-        return name.replaceFirst(name.substring(0, 1), name.substring(0, 1).toUpperCase());
+        return name.replace(0, 1, name.substring(0,1).toUpperCase()).toString();
     }
 }
