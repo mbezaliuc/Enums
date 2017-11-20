@@ -1,5 +1,7 @@
 package user.enums;
 
+import java.util.Random;
+
 public class User {
     private String name;
     private EngagementStatus engagementStatus;
@@ -9,14 +11,18 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        if (new String(TestEnums.VOWELS).contains("" + name.charAt(name.length()-1))){
-         this.gender= Gender.FEMALE;
+        if (new String(TestEnums.VOWELS).contains("" + name.charAt(name.length() - 1))) {
+            this.gender = Gender.FEMALE;
+        } else {
+            this.gender = Gender.MALE;
         }
-        else {
-            this.gender=Gender.MALE;
+        if(new Random().nextBoolean()) {
+            this.maritalStatus = MaritalStatus.MARRIED;
+        } else {
+            this.maritalStatus = MaritalStatus.NOT_MARRIED;
         }
-        this.engagementStatus=EngagementStatus.NOT_ENGAGED;
-        this.workingStatus=WorkingStatus.WORKING;
+        this.engagementStatus = EngagementStatus.NOT_ENGAGED;
+        this.workingStatus = WorkingStatus.WORKING;
     }
 
     public String getName() {
@@ -74,16 +80,19 @@ enum EngagementStatus {
     ENGAGED,
     NOT_ENGAGED
 }
+
 enum Gender {
     MALE,
     FEMALE,
     UNKNOWN
 }
+
 enum WorkingStatus {
     WORKING,
     NOT_WORKING,
     HOUSE_KEEPER
 }
+
 enum MaritalStatus {
     MARRIED,
     NOT_MARRIED,
